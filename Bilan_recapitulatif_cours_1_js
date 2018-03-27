@@ -1,0 +1,34 @@
+------------------------------------------------------------------Bilan récapitulatif-------------------------------------------------------
+Voici une petite synthèse de ce que vous venez d'apprendre :
+
+-Un programme est une liste d'ordres donnés à un ordinateur. Le rôle du programmeur est d'écrire des programmes qui produiront de manière fiable les résultats attendus.
+
+-Parmi les nombreux langages de programmations existants, JavaScript se distingue par son universalité : historiquement associé au monde du Web, il est maintenant présent partout, des serveurs aux applications mobiles en passant par les objets connectés.
+
+-Un programme JavaScript est une suite d'instructions rassemblées dans un fichier portant l'extension .js. On peut le tester depuis un navigateur Web en ouvrant une page HTML qui charge ce fichier.
+
+-Dans un programme, on mémorise des valeurs en les stockant dans des variables. Une variable est un conteneur d'information.
+
+-Le type d'une valeur détermine son rôle et les opérations qui lui sont applicables. Les principaux types de bases du langage JavaScript sont : nombre, chaîne de caractères, booléen et objet.
+
+-On utilise l'instruction if pour exécuter des instructions en fonction d'une condition vraie ou fausse, et l'instruction switch pour exécuter un groupe d'instructions parmi plusieurs.
+
+-On peut répéter des instructions en les incluant dans une bouclewhile ou dans une boucle for.
+
+-La création d'une fonction permet d'isoler un ensemble d'instructions qui réalisent une tâche donnée. Une fonction peut être appelée depuis n'importe quel emplacement du programme, rendant le code source plus modulaire. 
+Une fonction peut recevoir des informations sous la forme de paramètres et renvoyer ou non une valeur de retour (return).
+
+-La programmation orientée objet consiste à écrire des programmes en utilisant des objets. 
+Un objet JavaScript est constitué d'un ensemble de propriétés. 
+Une propriété est une association entre un nom et une valeur (nom = perrin). 
+(info: function () {
+        var resultat = this.nom + " " + this.prenom;
+        return resultat;
+    })
+Lorsque sa valeur est une fonction, on dit que la propriété est une méthode de l'objet.
+
+-JavaScript utilise les prototypes pour définir des modèles et partager des propriétés entre objets. 
+Il s'agit d'une spécificité de ce langage.
+
+-Les tableaux permettent de regrouper des données. 
+Comme les caractères d'une chaîne, les éléments d'un tableau sont identifiés par un indice débutant à zéro (chain[i]).
