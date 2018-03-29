@@ -20,11 +20,14 @@ Une fonction peut recevoir des informations sous la forme de paramètres et renv
 
 -La programmation orientée objet consiste à écrire des programmes en utilisant des objets. 
 Un objet JavaScript est constitué d'un ensemble de propriétés. 
-Une propriété est une association entre un nom et une valeur (nom = perrin). 
-(info: function () {
+Une propriété est une association entre un nom et une valeur (nom = perrin).
+var objet = {
+info: function () {
         var resultat = this.nom + " " + this.prenom;
         return resultat;
     })
+};
+
 Lorsque sa valeur est une fonction, on dit que la propriété est une méthode de l'objet.
 
 -JavaScript utilise les prototypes pour définir des modèles et partager des propriétés entre objets. 
