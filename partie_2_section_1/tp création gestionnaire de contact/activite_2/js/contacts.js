@@ -21,8 +21,8 @@ console.log("Bienvenue dans le gestionnaire des contacts !");
 //appel la méthode afficherOption de l'objet "options" afin d'afficher les options de saisi possibles pour l'utilisateur.
 options.afficherOptions();
 
-// création de l'objet "contact" :
-var contact = {
+// création du proto l'objet "contact" :
+var Contact = {
     //initialisation d'un contact :
   init: function (nom, prenom) {
         this.nom = nom;
