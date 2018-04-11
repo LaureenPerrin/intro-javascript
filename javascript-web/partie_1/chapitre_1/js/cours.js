@@ -1,14 +1,19 @@
-/*
-Pour obtenir ce résultat, le navigateur parcourt le code HTML de la page afin de construire une représentation de sa structure. 
-Ensuite, il utilise cette représentation pour afficher les différents éléments de la page.
+/*___________________________________________________________Découvrez le DOM_______________________________________________________________________
+
+Ce premier chapitre va vous permettre de découvrir comment la structure d'une page web est représentée par le navigateur.
+
+_____________________________________________________________1 Introduction au DOM___________________________________________________________________
+
+Vous savez déjà qu'une page web est un document contenant du texte ainsi que des balises qui permettent de structurer ce document, en décrivant des éléments comme des titres, des paragraphes, des liens, etc. Le langage de description d'une page web est le HTML.
 
 Là où les choses deviennent intéressantes, c'est que le navigateur permet d'accéder programmatiquement à la structure de la page qu'il affiche.
 En écrivant du code, on peut ainsi modifier dynamiquement la page web : ajouter ou retirer des éléments, changer leur style, etc. 
-Tout ou presque devient possible ! Et devinez quel langage on va utiliser pour faire tout ça ? JavaScript, bien sûr. 
 
 Cette représentation de la structure d'une page web offerte par un navigateur et exploitable via JavaScript est appelée DOM, 
 pour Document Object Model. Le DOM définit la structure d'une page et le moyen d'interagir avec elle : il s'agit d'une interface de programmation, 
 ou API (Application Programming Interface).
+
+__________________________________________________________2 La structure d'une page web_____________________________________________________________
 
 Une page web n'est rien d'autre qu'un ensemble de balises imbriquées les unes dans les autres. On peut la représenter sous une forme hiérarchisée
 appelée une arborescence. L'élément <html> en constitue la racine et contient deux éléments :<head> et <body>, qui contiennent eux-mêmes 
@@ -22,16 +27,18 @@ Ceux (en rouge) qui correspondent au contenu textuel de la page. Ces nœuds ne p
 
 Le navigateur web permet de visualiser la hiérarchie des éléments d'une page web.
 
---------------------------------------------Premiers pas avec le DOM en JavaScript-----------------------------------------------------------
+________________________________________________________3 Premiers pas avec le DOM en JavaScript________________________________________________________
+
 Le DOM représente une page web sous la forme d'une hiérarchie d'objets, où chaque objet correspond à un nœud de l'arborescence de la page. 
 Les objets du DOM disposent de propriétés et de méthodes permettant de les manipuler avec JavaScript.
 
-_______________________________________Accéder au DOM avec la variable document____________________________________________________________
+----------------------------------------------------------3.1 Accéder au DOM avec la variable document-----------------------------------------------------
+
 Lorsqu'un programme JavaScript s'exécute dans le contexte d'un navigateur web, il peut accéder à la racine du DOM en utilisant la variable document.
 
 La variable document correspond à l'élément <html>.
 
-Cette variable est un objet et dispose des propriétés head et body qui permettent d'accéder respectivement aux éléments <head> et<body> de la page.
+Cette variable est un objet et dispose des propriétés head et body qui permettent d'accéder respectivement aux éléments <head> et <body> de la page.
 */
 
 var h = document.head; // La variable h contient l'objet head du DOM
@@ -41,9 +48,11 @@ var b = document.body; // La variable b contient l'objet body du DOM
 console.log(b);
 
 
-/*______________________________________Découvrir le type d'un nœud_________________________________________________________________________
+/*------------------------------------------------------3.2 Découvrir le type d'un nœud--------------------------------------------------------------------
+
 Chaque objet du DOM a une propriété nodeType qui indique son type. 
-La valeur de cette propriété est document.ELEMENT_NODE pour un nœud "élément" (balise HTML) et document.TEXT_NODE pour un nœud textuel.*/
+La valeur de cette propriété est document.ELEMENT_NODE pour un nœud "élément" (balise HTML) et document.TEXT_NODE pour un nœud textuel.
+nodeType === ELEMENT_NODE ou ===TEXT_NODE*/
 
 if (document.body.nodeType === document.ELEMENT_NODE) {
     console.log("Body est un noeud élément");
@@ -51,15 +60,15 @@ if (document.body.nodeType === document.ELEMENT_NODE) {
     console.log("Body est un noeud textuel");
 }
 
-/*_____________________________________Accéder aux enfants d'un nœud élément________________________________________________________________
+/*------------------------------------------------------3.3 Accéder aux enfants d'un nœud élément-------------------------------------------------------------
+
 Comme nous l'avons vu précédemment, seuls les nœuds de type élément peuvent avoir des sous-nœuds (appelés enfants).
 Chaque objet du DOM de type élément possède une propriété childNodes. 
 Il s'agit d'une collection ordonnée regroupant tous ses nœuds enfants sous la forme d'objets DOM. 
 On peut utiliser cette collection un peu comme un tableau pour accéder aux différents enfants d'un nœud.
 La propriété childNodes n'est pas un véritable tableau JavaScript, mais on peut tout de même connaître sa taille avec length, 
 accéder à ses éléments grâce à leur indice et parcourir la collection avec une boucle for. 
-Consultez ce chapitre pour revoir comment on utilise les tableaux en JavaScript.
-Le code ci-dessous affiche dans la console le premier enfant du nœudbody. */
+Le code ci-dessous affiche dans la console le premier enfant du nœud body. */
 
 // Accès au premier enfant du noeud body
 console.log(document.body.childNodes[0]);
@@ -75,7 +84,8 @@ tout en gardant à l'esprit l'existence dans le DOM de ces nœuds "vides".*/
 // Accès au deuxième enfant du noeud body
 console.log(document.body.childNodes[1]);
 
-/*_____________________________________________Parcourir la liste des nœuds enfants_______________________________________________________
+/*_---------------------------------------------------------3.4 Parcourir la liste des nœuds enfants----------------------------------------------------------
+
 Pour parcourir la liste des nœuds enfants, vous pouvez recourir à une boucle for, comme dans l'exemple ci-dessous. */
 
 // Affiche les noeuds enfant du noeud body
@@ -87,10 +97,11 @@ for (var i = 0; i < document.body.childNodes.length; i++) {
 Là encore, les espaces et les retours à la ligne entre les balises correspondant à des nœuds textuels dans le DOM.*/
 
 
-/*____________________________________________________Accéder au parent d'un nœud__________________________________________________________
-Chaque objet du DOM possède une propriétéparentNodequi renvoie son nœud parent sous la forme d'un objet DOM.
+/*-----------------------------------------------------------3.5 Accéder au parent d'un nœud------------------------------------------------------------
 
-Pour le nœud racine du DOM (la variabledocument), la valeur deparentNodeestnull: document n'a aucun nœud parent.*/
+Chaque objet du DOM possède une propriété parentNode qui renvoie son nœud parent sous la forme d'un objet DOM.
+
+Pour le nœud racine du DOM (la variable document), la valeur de parentNode est null: document n'a aucun nœud parent.*/
 var h1 = document.body.childNodes[1];
 console.log(h1.parentNode); // Affiche le noeud body
 
@@ -110,5 +121,5 @@ l'arborescence de la page web.
 -Les objets du DOM disposent de propriétés et de méthodes utilisables avec JavaScript. 
 Parmi ces propriétés, nodeType renvoie le type de nœud,childNodes contient une collection de nœuds enfants et parentNode renvoie le nœud parent.
 
--Il existe d'autres propriétés que nous n'aborderons pas ici pour naviguer entre les objets du DOM :  firstChild,lastChildou encorenextSibling... 
+-Il existe d'autres propriétés que nous n'aborderons pas ici pour naviguer entre les objets du DOM :  firstChild,lastChildou encore nextSibling... 
 Vous en trouverez la liste complète sur le Mozilla Developer Network.

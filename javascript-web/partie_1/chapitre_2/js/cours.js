@@ -1,7 +1,55 @@
-/*
-_________________________________________________Sélectionner des éléments_____________________________________________________________________
+/*______________________________________________________________1 La page web d'exemple_____________________________________________________________
 
-----------------------------------------Les limites du parcours du DOM nœud par nœud------------------------------------------------------------
+Les exemples de ce chapitre utilisent tous la page web ci-dessous :
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Les sept merveilles du monde</title>
+</head>
+
+<body>
+    <h1>Les sept merveilles du monde</h1>
+    <p>Connaissez-vous les merveilles du monde ?</p>
+    <div id="contenu">
+        <h2>Merveilles du monde antique</h2>
+        <p>Cette liste nous vient de l'Antiquité.</p>
+        <ul class="merveilles" id="antiques">
+            <li class="existe">La pyramide de Khéops</li>
+            <li>Les jardins suspendus de Babylone</li>
+            <li>La statue de Zeus</li>
+            <li>Le temple d'Artémis</li>
+            <li>Le mausolée d'Halicarnasse</li>
+            <li>Le Colosse de Rhodes</li>
+            <li>Le phare d'Alexandrie</li>
+        </ul>
+        <h2>Nouvelles merveilles du monde</h2>
+        <p>Cette liste a été établie en 2009 à la suite d'un vote par Internet.</p>
+        <ul class="merveilles" id="nouvelles">
+            <li class="existe">La Grande Muraille de Chine</li>
+            <li class="existe">Pétra</li>
+            <Li class="existe">Le Christ du Corcovado</Li>
+            <Li class="existe">Machu Picchu</Li>
+            <li class="existe">Chichén Itzá</li>
+            <li class="existe">Le Colisée</li>
+            <li class="existe">Le Taj Mahal</li>
+        </ul>
+        <h2>Références</h2>
+        <ul>
+            <li><a href="https://fr.wikipedia.org/wiki/Sept_merveilles_du_monde">Merveilles antiques</a></li>
+            <li><a href="https://fr.wikipedia.org/wiki/Sept_nouvelles_merveilles_du_monde">Nouvelles merveilles</a></li>
+        </ul>
+    </div>
+
+    <script src="../js/cours.js"></script>
+</body>
+
+</html>
+_________________________________________________ 2 Sélectionner des éléments_____________________________________________________________________
+
+----------------------------------------2.1 Les limites du parcours du DOM nœud par nœud------------------------------------------------------------
 
 Imaginons qu'on souhaite sélectionner le titre "Merveilles du monde antique" de notre page web d'exemple. 
 En prenant en compte les nœuds textuels vides associés aux espaces et aux retours à la ligne, 
@@ -14,7 +62,7 @@ se complexifie. De plus, il risque de devenir erroné en cas de modification ult
 Pour sélectionner notre titre, il serait bien plus pratique de pouvoir simplement écrire "Je veux obtenir le premier titre h2 du document". 
 Ça tombe bien, c'est possible. */
 
-/*---------------------------------------Sélection d'éléments selon leur balise-----------------------------------------------------------------
+/*---------------------------------------------2.2 Sélection d'éléments selon leur balise-----------------------------------------------------------------
 
 Tous les éléments du DOM possèdent une méthode getElementsByTagName. Celle-ci renvoie une liste des éléments qui portent le nom de la balise 
 qui a été passée en paramètre lors de l'appel. 
@@ -32,7 +80,7 @@ Cela permet d'indiquer que le contenu de cette variable correspond à des élém
 Il s'agit d'une bonne pratique que nous allons adopter pour toute la suite de ce cours. 
 Une variable stockant un seul élément du DOM sera suffixée par Elt, abréviation de "élément".*/
 
-/*----------------------------------------Sélection d'éléments selon leur classe--------------------------------------------------------------------
+/*-------------------------------------------2.3 Sélection d'éléments selon leur classe--------------------------------------------------------------------
 
 Les éléments du DOM disposent également d'une méthode getElementsByClassName. 
 Elle renvoie une liste des éléments ayant le nom de classe passé en paramètre. 
@@ -46,7 +94,7 @@ for (var i = 0; i < merveillesElts.length; i++) {
 }
 //On obtient l'affichage des deux listes (balises <ul>) attendues, mais pas de la troisième qui ne possède pas la classe "merveilles".
 
-/*------------------------------------------Sélection d'un élément selon son identifiant-----------------------------------------------------------
+/*------------------------------------------2.4 Sélection d'un élément selon son identifiant-----------------------------------------------------------
 
 Enfin, chaque élément du DOM propose une méthode getElementById qui renvoie parmi tous ses sous-éléments celui possédant l'identifiant passé 
 en paramètre.
@@ -54,7 +102,7 @@ Le code ci-dessous permet de sélectionner et d'afficher la liste portant l'iden
 // Elément portant l'identifiant "nouvelles"
 console.log(document.getElementById("nouvelles"));
 
-/*-------------------------------------------Sélection d'éléments à partir d'un sélecteur CSS-----------------------------------------------------
+/*-------------------------------------------2.5 Sélection d'éléments à partir d'un sélecteur CSS-----------------------------------------------------
 
 Les méthodes de sélection que nous venons d'étudier constituent un net progrès par rapport à un parcours nœud par nœud du DOM. 
 Malgré tout, il existe des cas de figure pour lesquels on souhaiterait plus de souplesse.
@@ -90,7 +138,7 @@ Elle fonctionne de manière identique à querySelectorAll, mais renvoie uniqueme
 // Le premier paragraphe
 console.log(document.querySelector("p"));
 
-/*______________________________________________Choix de la méthode de sélection_________________________________________________________________
+/*______________________________________________2.6 Choix de la méthode de sélection_________________________________________________________________
 
 Nous venons d'étudier plusieurs méthodes de sélection d'éléments du DOM. En fonction du besoin, vous aurez à choisir la solution la plus adaptée.
 En théorie, il serait possible d'utiliser systématiquement les méthodes querySelectorAll et querySelector. Cependant, 
@@ -100,6 +148,7 @@ Je vous conseille donc d'adopter une approche pragmatique présentée dans le ta
 
 
 Nombre d'éléments à obtenir-----------------------Critère de sélection---------------------------------Méthode à utiliser
+
 
 Plusieurs_____________________________________________Par balise______________________________________getElementsByTagName
 
@@ -112,11 +161,11 @@ Un seul_______________________________________________Par identifiant___________
 Un seul (le premier)________________________Autre que par identifiant_________________________________querySelector*/
 
 
-/*_____________________________________________Obtenir des informations sur les éléments_________________________________________________________
+/*_____________________________________________ 3 Obtenir des informations sur les éléments_________________________________________________________
 
 Le DOM permet également d'obtenir des informations sur des éléments sélectionnés.﻿﻿
 
-----------------------------------------------------Le contenu HTML------------------------------------------------------------------------------
+----------------------------------------------------3.1 Le contenu HTML------------------------------------------------------------------------------
 La propriété innerHTML permet de récupérer tout le contenu HTML d'un élément du DOM.*/
 
 // Le contenu HTML de l'élément identifié par "contenu"
@@ -124,13 +173,13 @@ console.log(document.getElementById("contenu").innerHTML);
 /*Cette propriété a été introduite par Microsoft et ne fait pas partie de la spécification DOM du W3C, 
 mais elle est maintenant prise en charge par tous les principaux navigateurs.*/
 
-/*---------------------------------------------------Le contenu textuel--------------------------------------------------------------------------
+/*---------------------------------------------------3.2 Le contenu textuel--------------------------------------------------------------------------
 La propriété textContent renvoie tout le contenu textuel d'un élément du DOM, sans l'éventuel balisage HTML.﻿﻿
 
 // Le contenu textuel de l'élément identifié par "contenu"*/
 console.log(document.getElementById("contenu").textContent);
 
-/*---------------------------------------------------------Les attributs-------------------------------------------------------------------------
+/*----------------------------------------------------3.3 Les attributs-------------------------------------------------------------------------
 La méthode getAttribute peut être appliquée à un élément du DOM et renvoie la valeur de l'attribut passé en paramètre.﻿﻿
 
 // L'attribut href du premier lien*/
@@ -152,7 +201,7 @@ if (document.querySelector("a").hasAttribute("target")) {
     console.log("Le premier lien ne possède pas l'attribut target");
 }
 
-/*-----------------------------------------------------------Les classes------------------------------------------------------------------
+/*-----------------------------------------------------------3.4 Les classes------------------------------------------------------------------
 Dans une page web, une balise peut posséder plusieurs classes. 
 La propriéte classList permet de récupérer la liste des classes d'un élément du DOM. Elle s'utilise comme un tableau.
 
