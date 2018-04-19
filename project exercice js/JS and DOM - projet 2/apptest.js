@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	//ajout event click sur ul :
 	ul.addEventListener("click", (e) => {
-		if (e.target.tagName === "BUTTON") { //pourquoi button en majuscule ?
+		if (e.target.tagName === "BUTTON") { 
 			const button = e.target;
 			const li = button.parentNode;
 			const ul = li.parentNode;
